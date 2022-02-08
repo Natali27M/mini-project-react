@@ -1,10 +1,20 @@
-// import {useSelector} from "react-redux";
+import {FC, useEffect} from "react";
 
-const MoviesPage = () => {
-    // const {original_title, id} = useSelector(state => state['movieSliceReduser']);
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {getAllMovie} from "../../store";
+import {Movie} from "../../components/Movie";
+
+const MoviesPage:FC = () => {
+
+    const {movies} = useAppSelector(state => state.movie);
+    const dispatch = useAppDispatch();
+
+    useEffect(()=>{
+        dispatch(getAllMovie())
+    },[dispatch])
     return (
         <div>
-            Movie
+            {movies.map(movie=><Movie key={movie.id} movie={movie}/>)}
         </div>
     );
 };

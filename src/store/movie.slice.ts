@@ -1,20 +1,20 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {movieService} from "../services";
-import {IMovie} from "../interfaces";
 
-// movieService.getAll().then(value => value.data).then(console.log);
+import {movieService} from "../services";
+import {IMovie, IStateMovie} from "../interfaces";
+
+movieService.getAll().then(value => value.data).then(console.log);
 
 export const getAllMovie=createAsyncThunk(
     'movieSlice/getAllMovie',
     async (_,{dispatch})=>{
         const {data} = await movieService.getAll();
-        dispatch(setMovies({movies: data}));
-
+        dispatch(setMovies({movies: data.results}));
     }
 )
 
-const initialState = {
-    movie: []
+const initialState:IStateMovie = {
+    movies: []
 };
 
 const movieSlice=createSlice({
@@ -23,7 +23,6 @@ const movieSlice=createSlice({
     reducers: {
         setMovies: (state, action: PayloadAction<{ movies: IMovie[] }>) => {
             state.movies = action.payload.movies;
-            console.log(action.payload.movies)
         }
     }
 })

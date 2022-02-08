@@ -3,7 +3,7 @@ import {configureStore, combineReducers} from "@reduxjs/toolkit";
 import movieSliceReducer from "./movie.slice";
 
 const rootReducer = combineReducers({
-    movieSliceReducer
+    movie: movieSliceReducer
 });
 
 export const setupStore = () => configureStore({
