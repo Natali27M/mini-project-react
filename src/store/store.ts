@@ -3,7 +3,8 @@ import {configureStore, combineReducers} from "@reduxjs/toolkit";
 import movieSliceReducer from "./movie.slice";
 
 const rootReducer = combineReducers({
-    movie: movieSliceReducer
+    movie: movieSliceReducer,
+    // genre: movieSliceReducer
 });
 
 export const setupStore = () => configureStore({

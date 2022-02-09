@@ -1,0 +1,17 @@
+.header{
+    height: 70px;
+    background: black;
+    color: white;
+}
+.moviePagesStyle{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+.footer{
+    height: 70px;
+    background: black;
+    color: white;
+}

@@ -3,7 +3,6 @@ import {Routes, Route} from "react-router-dom";
 
 import {MoviesPage} from "./pages";
 
-
 const App: FC = () => {
     return (
         <div>
