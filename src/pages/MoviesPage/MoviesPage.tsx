@@ -52,8 +52,8 @@ const MoviesPage:FC = () => {
                         <button>First page</button>
                         <button disabled={data.page - 1 < 1} onClick={() => prevPage()}>Prev page</button>
                         {data.page}of{data.total_pages}
-                        <button onClick={() => nextPage()}>Next page</button>
-                        {/*disabled={data.page + 1 > data.total_pages}*/}
+                        <button disabled={data.page + 1 > data.total_pages} onClick={() => nextPage()}>Next page</button>
+
                         <button onClick={() => lastPage()}>Last page</button>
                     </div>
                     <div className={css.footer}>Footer</div>
