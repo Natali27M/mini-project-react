@@ -1,9 +1,9 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
 
 import {genresService, movieService} from "../services";
-import {IMovie, IStateMovie} from "../interfaces";
+import {IActionFulled, IMovieGenreData, IPage, IStateMovie} from "../interfaces";
 
-export const getAllMovie = createAsyncThunk(
+export const getAllMovie = createAsyncThunk<IMovieGenreData>(
     "movieSlice/getAllMovie",
     // @ts-ignore
     async (payload:any) => {
@@ -18,11 +18,10 @@ export const getAllMovie = createAsyncThunk(
     }
 );
 
-
 const initialState:IStateMovie = {
     movies: [],
     genres: [],
-    data:{page:1},
+    data:{page:1,total_pages:0},
     status:null,
     error: null
 };
@@ -32,29 +31,29 @@ const movieSlice = createSlice({
     initialState,
 
     reducers: {
-        setPage: (state, action: PayloadAction<any>) => {
+        setPage: (state:Draft<IStateMovie>, action: PayloadAction<IPage>) => {
             state.data.page = action.payload.page;
         }
     },
 
     extraReducers: {
-        [getAllMovie.pending.type]: (state: any) => {
+        [getAllMovie.pending.type]: (state: Draft<IStateMovie>) => {
             state.status = 'pending';
             state.error = null;
         },
-        [getAllMovie.fulfilled.type]: (state: any, action: PayloadAction<any>) => {
+        [getAllMovie.fulfilled.type]: (state: Draft<IStateMovie>, action: PayloadAction<IActionFulled>) => {
             state.status = 'fulfilled';
             state.movies = action.payload.movie;
             state.genres = action.payload.genre;
             state.data = action.payload.data;
-            console.log(action.payload.data)
         },
-        [getAllMovie.rejected.type]: (state: any, action: PayloadAction<IMovie[]>) => {
+        [getAllMovie.rejected.type]: (state: Draft<IStateMovie>, action: PayloadAction<string>) => {
             state.status = 'reject';
             state.error = action.payload;
         },
     }
 });
+
 const movieSliceReducer = movieSlice.reducer;
 
 export default movieSliceReducer;

@@ -3,7 +3,7 @@ import {FC, useEffect, useState} from "react";
 import {IMovie} from "../../interfaces";
 import css from "./Movie.module.css"
 
-const Movie: FC<{ movie: IMovie ,getMovieGenres:any}> = (
+const Movie: FC<{ movie: IMovie, getMovieGenres: (id:number[])=>string[]}> = (
     {
         movie:
             {
@@ -16,11 +16,12 @@ const Movie: FC<{ movie: IMovie ,getMovieGenres:any}> = (
             },
         getMovieGenres
     }) => {
-    const [movieGenres, setMovieGenres] = useState<any[]>([]);
+
+    const [movieGenres, setMovieGenres] = useState<string[]>([]);
 
     useEffect(() => {
         setMovieGenres(getMovieGenres(genre_ids));
-    }, []);
+    }, [genre_ids,getMovieGenres]);
 
 
     return (
@@ -30,7 +31,7 @@ const Movie: FC<{ movie: IMovie ,getMovieGenres:any}> = (
             <p>{release_date}</p>
             <p>{vote_average}</p>
             <p>{overview}</p>
-            <div>{movieGenres.map((genre,index)=><div key={index}>{genre}</div>)}</div>
+            <div>{movieGenres.map((genre, index) => <div key={index}>{genre}</div>)}</div>
         </div>
     );
 };

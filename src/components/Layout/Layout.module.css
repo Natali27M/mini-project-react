@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    height: 70px;
+    background: black;
+}
+.header a {
+    color: white;
+}
+.outlet {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+}
