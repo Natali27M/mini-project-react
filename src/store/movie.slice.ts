@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
 
 import {genresService, movieService} from "../services";
-import {IActionFulledMovies, IGenreIdAndPage, IMovieGenreData, IPage, IStateMovie} from "../interfaces";
+import {IActionFulledMovies, IMovieGenreData, IPage, IStateMovie} from "../interfaces";
 
 
 export const getAllMovie = createAsyncThunk<IMovieGenreData,IPage>(

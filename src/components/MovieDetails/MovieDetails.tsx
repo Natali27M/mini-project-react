@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {useAppSelector} from "../../hooks";
 
 const MovieDetails = () => {
-    const {genres} = useAppSelector(state => state.movie);
+    const {genres} = useAppSelector(state => state.movies);
 
     const state = useLocation();
     // @ts-ignore
@@ -16,19 +16,11 @@ const MovieDetails = () => {
             return genres.filter(genre => genre.id === genreId)[0].name
         });
     }
+    const [movieGenres, setMovieGenres] = useState<string[]>([]);
 
-    console.log(genres)
-
-
-//     const getMovieGenres:IPage[](id:number[])=> string[]
-//
-// //     const getMovieGenres: (id: number[]) => string[]
-// const [movieGenres, setMovieGenres] = useState<string[]>([]);
-//
-// useEffect(() => {
-//     setMovieGenres(getMovieGenres(genre_ids));
-// }, [genre_ids, getMovieGenres]);
-
+    useEffect(() => {
+        setMovieGenres(getMovieGenres(genre_ids));
+    }, [genre_ids]);
 
     return (
         <div>
@@ -38,7 +30,7 @@ const MovieDetails = () => {
             <p>{release_date}</p>
             <p>{vote_average}</p>
             <p>{overview}</p>
-            {/*<p>{getMovieGenres}</p>*/}
+            {movieGenres.map(movieGenre=><div key={movieGenre}>{movieGenre}</div>)}
         </div>
     );
 };

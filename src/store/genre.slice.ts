@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
-import {IActionFulledGenres, IGenreIdAndPage, IMovieByGenre} from "../interfaces";
+import {IActionFulledGenres, IGenreIdAndPage, IMovieByGenre, IPage, IStateMovie} from "../interfaces";
 import {genresService} from "../services";
 import {IMoviePage} from "../interfaces/IMoviePage";
 
@@ -9,9 +9,8 @@ export const getAllGenres = createAsyncThunk<IMoviePage,IGenreIdAndPage>(
     async ({genre_id,page}) => {
         try {
             const genres = await genresService.getGenres(genre_id,page);
-            console.log(genres)
 
-            return {moviesByGenre:genres.data.results};
+            return {moviesByGenre:genres.data.results,data:genres.data};
 
         } catch (e){
             console.log(e);
@@ -29,7 +28,11 @@ const initialState:IMovieByGenre={
 const genreSlice = createSlice({
     name: "genreSlice",
     initialState,
-    reducers: {},
+    reducers: {
+        setPageGenre: (state:Draft<any>, action: PayloadAction<IPage>) => {
+            state.data.page = action.payload.page;
+        }
+    },
     extraReducers: {
         [getAllGenres.pending.type]: (state: Draft<IMovieByGenre>) => {
             state.status = 'pending';
@@ -50,6 +53,8 @@ const genreSlice = createSlice({
 const genreSliceReducer = genreSlice.reducer;
 
 export default genreSliceReducer;
+
+export const {setPageGenre}=genreSlice.actions
 
 // import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
 //

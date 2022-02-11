@@ -6,7 +6,7 @@ import {getAllMovie} from "../../store";
 import {Outlet} from "react-router-dom";
 
 const GenresPage: FC = () => {
-    const {genres} = useAppSelector(state => state.movie);
+    const {genres} = useAppSelector(state => state.movies);
 
     const dispatch = useAppDispatch();
 

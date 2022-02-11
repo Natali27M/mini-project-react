@@ -7,7 +7,7 @@ import {Movie} from "../../components";
 import css from "./MoviePage.module.css";
 
 const MoviesPage: FC = () => {
-    const {movies, status, genres, data} = useAppSelector(state => state.movie);
+    const {movies, status, genres, data} = useAppSelector(state => state.movies);
 
     const dispatch = useAppDispatch();
 

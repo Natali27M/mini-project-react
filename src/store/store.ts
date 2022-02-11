@@ -4,7 +4,7 @@ import movieSliceReducer from "./movie.slice";
 import genreSliceReducer from "./genre.slice";
 
 const rootReducer = combineReducers({
-    movie: movieSliceReducer,
+    movies: movieSliceReducer,
     genres:genreSliceReducer
 });
 
