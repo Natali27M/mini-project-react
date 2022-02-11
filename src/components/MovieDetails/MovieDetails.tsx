@@ -5,7 +5,9 @@ import {useState,useEffect} from "react";
 
 const MovieDetails = () => {
     const {state} = useLocation();
-    console.log(state)
+    console.log(state);
+     // const{original_title, release_date, vote_average, overview}=state
+    // const {{original_title, release_date, vote_average, overview}} = state;
     // const [movie, setMovie] = useState(null);
     //
     //

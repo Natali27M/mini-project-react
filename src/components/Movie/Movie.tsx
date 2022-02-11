@@ -30,7 +30,7 @@ const Movie: FC<{ movie: IMovie, getMovieGenres: (id:number[])=>string[]}> = (
 
                 <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="original_title"/>
 
-    <Link to={`/movies/${id.toString()}`} state={original_title}> Перехід</Link>
+    <Link to={`/movies/${id.toString()}`} state={{original_title,release_date,vote_average,overview}}> Перехід</Link>
             <h4>{original_title}</h4>
             <p>{release_date}</p>
             <p>{vote_average}</p>
