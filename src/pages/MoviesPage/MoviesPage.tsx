@@ -1,4 +1,5 @@
 import {FC, useEffect} from "react";
+import {Outlet} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {getAllMovie, setPage} from "../../store";
@@ -39,21 +40,25 @@ const MoviesPage: FC = () => {
 
     return (
         <div>
-            {status === "fulfilled" ? <div>
-                    <div className={css.moviePagesStyle}>
-                        {movies.map(movie => <Movie key={movie.id} movie={movie} getMovieGenres={getMovieGenres}/>)}
-                    </div>
-                    <div>
-                        {/*<button>First page</button>*/}
-                        <button disabled={data.page - 1 < 1} onClick={() => prevPage()}>Prev page</button>
-                        {data.page}of{data.total_pages}
-                        <button disabled={data.page + 1 > data.total_pages} onClick={() => nextPage()}>Next page</button>
-                        {/*<button onClick={() => lastPage()}>Last page</button>*/}
-                    </div>
-                    <div className={css.footer}>Footer</div>
-                </div> :
-                <div>Loading</div>
-            }
+            <div>
+                {status === "fulfilled" ? <div>
+                        <div className={css.moviePagesStyle}>
+                            {movies.map(movie => <Movie key={movie.id} movie={movie} getMovieGenres={getMovieGenres}/>)}
+                        </div>
+                        <div>
+                            {/*<button>First page</button>*/}
+                            <button disabled={data.page - 1 < 1} onClick={() => prevPage()}>Prev page</button>
+                            {data.page}of{data.total_pages}
+                            <button disabled={data.page + 1 > data.total_pages} onClick={() => nextPage()}>Next page
+                            </button>
+                            {/*<button onClick={() => lastPage()}>Last page</button>*/}
+                        </div>
+                        <div className={css.footer}>Footer</div>
+                    </div> :
+                    <div>Loading</div>
+                }
+            </div>
+            <Outlet/>
         </div>
     );
 };

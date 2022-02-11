@@ -1,12 +1,17 @@
 import {FC} from "react";
+import {Link} from "react-router-dom";
 
 import {IGenre} from "../../interfaces";
 
-const Genre:FC<{genre:IGenre}> = ({genre:{name}}) => {
+const Genre:FC<{genre:IGenre}> = ({genre:{name,id}}) => {
+
     return (
         <div>
-            {name}
+            <div>
+                <Link to={`/genres/${id}`} state={id}>{name}</Link>
+            </div>
         </div>
+
     );
 };
 

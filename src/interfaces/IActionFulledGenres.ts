@@ -1,7 +1,7 @@
 import {IMovie} from "./IMovie";
 import {IData} from "./IData";
 
-export interface IGetAllAxiosServiceMovie {
-    movie: IMovie;
+export interface IActionFulledGenres{
+    moviesByGenre: IMovie[],
     data: IData;
 }

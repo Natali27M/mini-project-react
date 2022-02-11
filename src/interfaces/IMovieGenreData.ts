@@ -6,5 +6,6 @@ export interface IMovieGenreData{
     movies: IMovie[],
     genres: IGenre[],
     data: IData;
-    page:number
+    page: number;
+    results: IMovie[];
 }

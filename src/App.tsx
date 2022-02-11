@@ -2,7 +2,7 @@ import {FC} from "react";
 import {Routes, Route} from "react-router-dom";
 
 import {MoviesPage,GenresPage} from "./pages";
-import {Layout} from "./components";
+import {Layout, MovieDetails, MoviesByGenre} from "./components";
 
 const App: FC = () => {
     return (
@@ -10,8 +10,12 @@ const App: FC = () => {
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
                     <Route index element={<MoviesPage/>}/>
-                    <Route path={'/movies'} element={<MoviesPage/>}/>
-                    <Route path={'/genres'} element={<GenresPage/>}/>
+                    <Route path={'/movies'} element={<MoviesPage/>}>
+                        <Route path={':id'} element={<MovieDetails/>}/>
+                    </Route>
+                    <Route path={'/genres'} element={<GenresPage/>}>
+                        <Route path={':id'} element={<MoviesByGenre/>}/>
+                    </Route>
                 </Route>
             </Routes>
         </div>
