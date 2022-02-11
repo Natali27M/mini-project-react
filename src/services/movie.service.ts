@@ -3,6 +3,5 @@ import {urlsMovie} from "../configs/urls";
 import {IMovieGenreData} from "../interfaces";
 
 export const movieService={
-    getAll: (page:number) => axiosService.get<IMovieGenreData>(urlsMovie.movie,{params:{page}}),
-    // getById: (movieId: number) => axiosService.get<any>(`/movie/${movieId}`)
+    getAll: (page:number) => axiosService.get<IMovieGenreData>(urlsMovie.movie,{params:{page}})
 }

@@ -8,13 +8,12 @@ const App: FC = () => {
     return (
         <div>
             <Routes>
-                <Route path={'/'} element={<Layout/>}>
+                <Route path={"/"} element={<Layout/>}>
                     <Route index element={<MoviesPage/>}/>
-                    <Route path={'/movies'} element={<MoviesPage/>}>
-                        <Route path={':id'} element={<MovieDetails/>}/>
-                    </Route>
-                    <Route path={'/genres'} element={<GenresPage/>}>
-                        <Route path={':id'} element={<MoviesByGenre/>}/>
+                    <Route path={"/movies"} element={<MoviesPage/>}/>
+                    <Route path={"/movies/:id"} element={<MovieDetails/>}/>
+                    <Route path={"/genres"} element={<GenresPage/>}>
+                        <Route path={":genre_id"} element={<MoviesByGenre/>}/>
                     </Route>
                 </Route>
             </Routes>

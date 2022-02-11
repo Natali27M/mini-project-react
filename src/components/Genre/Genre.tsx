@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useEffect} from "react";
 import {Link} from "react-router-dom";
 
 import {IGenre} from "../../interfaces";

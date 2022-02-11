@@ -3,8 +3,8 @@ import {IGenre} from "./IGenre";
 import {IData} from "./IData";
 
 export interface IMovieGenreData{
-    movies: IMovie[],
-    genres: IGenre[],
+    movies: IMovie[];
+    genres: IGenre[];
     data: IData;
     page: number;
     results: IMovie[];

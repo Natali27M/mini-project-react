@@ -27,11 +27,11 @@ const Movie: FC<{ movie: IMovie, getMovieGenres: (id:number[])=>string[]}> = (
 
     return (
         <div className={css.movieCard}>
-
-                <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="original_title"/>
-
-    <Link to={`/movies/${id.toString()}`} state={{original_title,release_date,vote_average,overview}}> Перехід</Link>
-            <h4>{original_title}</h4>
+            <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="original_title"/>
+            <Link to={`/movies/${id.toString()}`} state={{id,original_title,poster_path, release_date, vote_average,
+                overview,genre_ids}}>
+                <h4>{original_title}</h4>
+            </Link>
             <p>{release_date}</p>
             <p>{vote_average}</p>
             <p>{overview}</p>

@@ -8,14 +8,16 @@ const MoviesByGenre:FC= () => {
     const {moviesByGenre} = useAppSelector(state => state.genres);
 
     const dispatch = useAppDispatch();
-    const {id}=useParams()
+
+    const {genre_id}=useParams()
+    console.log(genre_id)
 
     useEffect(() => {
-        if(id){
+        if(genre_id){
             // @ts-ignore
-            dispatch(getAllGenres(id))
+            dispatch(getAllGenres({genre_id}))
         }
-    }, [id]);
+    }, [genre_id]);
 
     return (
         <div>

@@ -6,9 +6,10 @@ import {IMoviePage} from "../interfaces/IMoviePage";
 export const getAllGenres = createAsyncThunk<IMoviePage,IGenreIdAndPage>(
     "genreSlice/getAllGenres",
 // @ts-ignore
-    async ({id,page}) => {
+    async ({genre_id,page}) => {
         try {
-            const genres = await genresService.getGenres(id,page);
+            const genres = await genresService.getGenres(genre_id,page);
+            console.log(genres)
 
             return {moviesByGenre:genres.data.results};
 
@@ -51,17 +52,19 @@ const genreSliceReducer = genreSlice.reducer;
 export default genreSliceReducer;
 
 // import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
-// import {IMovie, IMovieByGenre} from "../interfaces";
+//
+// import {IActionFulledGenres, IGenreIdAndPage, IMovieByGenre} from "../interfaces";
 // import {genresService} from "../services";
+// import {IMoviePage} from "../interfaces/IMoviePage";
 //
-// export const getAllGenres = createAsyncThunk(
+// export const getAllGenres = createAsyncThunk<IMoviePage,IGenreIdAndPage>(
 //     "genreSlice/getAllGenres",
-//
-//     async (genre_id:number) => {
+// // @ts-ignore
+//     async ({id,page}) => {
 //         try {
-//             const genres = await genresService.getGenres(genre_id);
+//             const genres = await genresService.getGenres(id,page);
 //
-//              return genres.data.results;
+//             return {moviesByGenre:genres.data.results};
 //
 //         } catch (e){
 //             console.log(e);
@@ -71,6 +74,7 @@ export default genreSliceReducer;
 //
 // const initialState:IMovieByGenre={
 //     moviesByGenre: [],
+//     data:{page:1,total_pages:0},
 //     status:null,
 //     error: null
 // }
@@ -81,15 +85,16 @@ export default genreSliceReducer;
 //     reducers: {},
 //     extraReducers: {
 //         [getAllGenres.pending.type]: (state: Draft<IMovieByGenre>) => {
-//             state.status = 'pending';
+//             state.status = "pending";
 //             state.error = null;
 //         },
-//         [getAllGenres.fulfilled.type]: (state: Draft<IMovieByGenre>, action: PayloadAction<IMovie[]>) => {
-//             state.status = 'fulfilled';
-//             state.moviesByGenre = action.payload;
+//         [getAllGenres.fulfilled.type]: (state: Draft<IMovieByGenre>, action: PayloadAction<IActionFulledGenres>) => {
+//             state.status = "fulfilled";
+//             state.moviesByGenre = action.payload.moviesByGenre;
+//             state.data = action.payload.data;
 //         },
 //         [getAllGenres.rejected.type]: (state: Draft<IMovieByGenre>, action: PayloadAction<string>) => {
-//             state.status = 'reject';
+//             state.status = "reject";
 //             state.error = action.payload;
 //         }
 //     }

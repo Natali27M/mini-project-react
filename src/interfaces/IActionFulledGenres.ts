@@ -2,6 +2,6 @@ import {IMovie} from "./IMovie";
 import {IData} from "./IData";
 
 export interface IActionFulledGenres{
-    moviesByGenre: IMovie[],
+    moviesByGenre: IMovie[];
     data: IData;
 }

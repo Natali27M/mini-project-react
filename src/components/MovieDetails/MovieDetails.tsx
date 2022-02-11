@@ -1,48 +1,44 @@
-
 import {useLocation} from "react-router-dom";
-import {useState,useEffect} from "react";
-
+import {IMovie, IMovieDetails, IPage} from "../../interfaces";
+import {useEffect, useState} from "react";
+import {useAppSelector} from "../../hooks";
 
 const MovieDetails = () => {
-    const {state} = useLocation();
-    console.log(state);
-     // const{original_title, release_date, vote_average, overview}=state
-    // const {{original_title, release_date, vote_average, overview}} = state;
-    // const [movie, setMovie] = useState(null);
-    //
-    //
-    // useEffect(() => {
-    //     if (state) {
-    //         setMovie({state})
-    //         return
-    //     }},[])
-//     const stateMovie = useAppSelector(state => state.movie);
-//    const movieDetails=stateMovie.movies
-//     console.log(movieDetails)
-//
-//     const dispatch = useAppDispatch();
-//
-//     const {id} = useParams();
-// console.log(id)
-//
-//     useEffect(() => {
-//         if(id){
-//             // @ts-ignore
-//             dispatch()
-//             console.log(id)
-//         }
-//     }, []);
+    const {genres} = useAppSelector(state => state.movie);
 
-    // const {id} = useParams();
-    // const [user,setUser] = useState(null);
-    //
-    // useEffect(() => {
-    //     userService.getById(id).then(value => setUser({...value}));
-    // }, [id]);
+    const state = useLocation();
+    // @ts-ignore
+    const movieDetails: IMovie = state.state;
+    const {id, original_title, poster_path, release_date, vote_average, overview,genre_ids} = movieDetails;
+
+    const getMovieGenres = (genre_ids: number[]) => {
+        return genre_ids.map(genreId => {
+            return genres.filter(genre => genre.id === genreId)[0].name
+        });
+    }
+
+    console.log(genres)
+
+
+//     const getMovieGenres:IPage[](id:number[])=> string[]
+//
+// //     const getMovieGenres: (id: number[]) => string[]
+// const [movieGenres, setMovieGenres] = useState<string[]>([]);
+//
+// useEffect(() => {
+//     setMovieGenres(getMovieGenres(genre_ids));
+// }, [genre_ids, getMovieGenres]);
+
 
     return (
         <div>
-
+            <p>{id}</p>
+            <h3>{original_title}</h3>
+            <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="original_title"/>
+            <p>{release_date}</p>
+            <p>{vote_average}</p>
+            <p>{overview}</p>
+            {/*<p>{getMovieGenres}</p>*/}
         </div>
     );
 };

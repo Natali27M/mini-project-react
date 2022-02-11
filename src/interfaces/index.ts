@@ -6,6 +6,6 @@ export * from "./IActionFulledMovies";
 export * from "./IPage";
 export * from "./IMovieGenreData";
 export * from "./IMovieByGenre";
-export * from "./IAllMoviesByGenre";
 export * from "./IGenreIdAndPage";
 export * from "./IActionFulledGenres";
+export * from "./IMovieDetails";
