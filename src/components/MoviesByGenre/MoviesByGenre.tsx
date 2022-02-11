@@ -19,7 +19,7 @@ const MoviesByGenre:FC= () => {
     }, [genre_id]);
 
     const {data} = useAppSelector(state => state.genres);
-console.log({data})
+
     useEffect(() => {
         // @ts-ignore
         dispatch(getAllGenres({page: data.page}))
@@ -28,19 +28,33 @@ console.log({data})
 
     const prevPage = () => {
         if (data.page <= data.total_pages) {
-            dispatch(setPage({page: data.page - 1}));
+            dispatch(setPageGenre({page: data.page - 1}));
             console.log(data.page)
         }
     };
 
     const nextPage = () => {
-        if (data.page <= data.total_pages) {
+        if (data.page >= 1) {
             dispatch(setPageGenre({page: data.page + 1}));
             console.log(data.page)
         }
     };
-    // console.log(data.page)
-    // console.log(data.total_pages)
+    //
+    // useEffect(() => {
+    //     dispatch(getAllMovie({page: data.page}))
+    // }, [dispatch, data.page]);
+    //
+    // const prevPage = () => {
+    //     if (data.page <= data.total_pages) {
+    //         dispatch(setPage({page: data.page - 1}));
+    //     }
+    // };
+    //
+    // const nextPage = () => {
+    //     if (data.page <= data.total_pages) {
+    //         dispatch(setPage({page: data.page + 1}));
+    //     }
+    // };
 
     return (
         <div>
