@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid black;
+    background: darkred;
+    color: white;
+}
+.main h2 {
+    text-decoration: underline white;
+}
+.main p {
+    color: black;
+    margin: 0;
+}
+.main img {
+    border: 10px solid black;
+    background: black;
+}
+.movieGenres {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+}
+.releaseData p{
+    color: white;
+}
+.overview {
+    width: 90%;
+    background: white;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+

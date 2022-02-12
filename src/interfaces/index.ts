@@ -8,5 +8,5 @@ export * from "./IMovieGenreData";
 export * from "./IMovieByGenre";
 export * from "./IGenreIdAndPage";
 export * from "./IActionFulledGenres";
-export * from "./IMovieDetails";
 export * from "./IGenreService";
+export * from "./IId";

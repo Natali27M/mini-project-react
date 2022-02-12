@@ -1,7 +1,8 @@
 import {useLocation} from "react-router-dom";
-import {IMovie, IMovieDetails, IPage} from "../../interfaces";
+import {IMovie} from "../../interfaces";
 import {useEffect, useState} from "react";
 import {useAppSelector} from "../../hooks";
+import css from "./MovieDetails.module.css";
 
 const MovieDetails = () => {
     const {genres} = useAppSelector(state => state.movies);
@@ -9,7 +10,7 @@ const MovieDetails = () => {
     const state = useLocation();
     // @ts-ignore
     const movieDetails: IMovie = state.state;
-    const {id, original_title, poster_path, release_date, vote_average, overview,genre_ids} = movieDetails;
+    const {original_title, poster_path, release_date, vote_average, overview,genre_ids} = movieDetails;
 
     const getMovieGenres = (genre_ids: number[]) => {
         return genre_ids.map(genreId => {
@@ -23,14 +24,20 @@ const MovieDetails = () => {
     }, [genre_ids]);
 
     return (
-        <div>
-            <p>{id}</p>
-            <h3>{original_title}</h3>
+        <div className={css.main}>
+            <h2>{original_title}</h2>
             <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="original_title"/>
-            <p>{release_date}</p>
-            <p>{vote_average}</p>
-            <p>{overview}</p>
-            {movieGenres.map(movieGenre=><div key={movieGenre}>{movieGenre}</div>)}
+            <div className={css.releaseData}>
+                <p>{release_date}</p>
+            </div>
+            <p>-{vote_average}-</p>
+            <div className={css.movieGenres}>
+                {movieGenres.map(movieGenre=><div key={movieGenre}>{movieGenre}</div>)}
+            </div>
+            <div className={css.overview}>
+                <p>{overview}</p>
+            </div>
+
         </div>
     );
 };

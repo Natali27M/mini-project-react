@@ -11,6 +11,7 @@ const Layout = () => {
                 <NavLink to="/genres">Genres</NavLink>
             </div>
             <div className={css.outlet}><Outlet/></div>
+            <div className={css.footer}>https://api.themoviedb.org</div>
         </div>
     );
 };

@@ -3,15 +3,23 @@
     background: black;
     color: white;
 }
-.moviePagesStyle{
+.moviesPages{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: calc(100vh - 140px);
+    height: calc(100vh - 154px);
     overflow-y: auto;
 }
-.footer{
-    height: 70px;
-    background: black;
-    color: white;
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 5px;
+    border-top: 2px solid black;
+    padding-top: 10px;
+}
+.button {
+    background-color: darkred;
+    border-radius: 5px;
 }

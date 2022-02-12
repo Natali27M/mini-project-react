@@ -1,0 +1,13 @@
+.genre {
+    display: flex;
+    justify-content: center;
+    width: 130px;
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: darkred;
+}
+.genre a {
+    color: white;
+    text-decoration: none;
+}

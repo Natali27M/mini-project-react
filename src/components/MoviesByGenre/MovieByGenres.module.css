@@ -1,0 +1,51 @@
+.moviesAll {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.movieCard{
+    border: 5px solid black;
+    width: 23%;
+    /*height: 900px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 5px  0;
+    margin-bottom: 20px;
+}
+.movieCard p{
+    margin: 0;
+}
+.originalTitle {
+    background-color: darkred;
+    width: 100%;
+    color: white;
+    margin: 5px;
+}
+.originalTitle h3 {
+    height: 60px;
+}
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 200px;
+    height: calc(100vh - 150px);
+    text-align: center;
+}
+.dataAverage p{
+    font-size: 18px;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.button {
+    background-color: darkred;
+    border-radius: 5px;
+}
+
