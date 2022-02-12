@@ -9,4 +9,6 @@ export * from "./IMovieByGenre";
 export * from "./IGenreIdAndPage";
 export * from "./IActionFulledGenres";
 export * from "./IGenreService";
-export * from "./IId";
+export * from "./IIdPage";
+export * from "./IGetAllMovieService";
+export * from './IId';

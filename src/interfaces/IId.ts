@@ -1,4 +1,3 @@
 export interface IId {
-    genre_id: number;
-
+    genreId:number
 }

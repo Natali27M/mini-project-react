@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
 
 import {genresService, movieService} from "../services";
-import {IActionFulledMovies, IMovieGenreData, IPage, IStateMovie} from "../interfaces";
+import {IActionFulledMovies, IGetAllMovieService, IPage, IStateMovie} from "../interfaces";
 
 
-export const getAllMovie = createAsyncThunk<IMovieGenreData,IPage>(
+export const getAllMovie = createAsyncThunk<IGetAllMovieService,IPage>(
     "movieSlice/getAllMovie",
 // @ts-ignore
     async (payload:IPage) => {

@@ -2,48 +2,54 @@ import {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {getAllGenres, getAllGenresPage, setPageGenre} from "../../store";
+import {getAllGenres, getAllGenresPage, setGenreId} from "../../store";
 import css from "./MovieByGenres.module.css";
 
-const MoviesByGenre:FC= () => {
-    const {moviesByGenre,status} = useAppSelector(state => state.genres);
+const MoviesByGenre: FC = () => {
+    const {moviesByGenre, status, genreId} = useAppSelector(state => state.genres);
 
     const dispatch = useAppDispatch();
 
-    const {genre_id}=useParams()
+    const {genre_id} = useParams()
+    dispatch(setGenreId({genre_id}))
+
 
     useEffect(() => {
-        if(genre_id){
+        if (genre_id) {
             // @ts-ignore
-            dispatch(getAllGenres({genre_id}))
+            dispatch(getAllGenres({genre_id: genreId, page: 1}))
+
         }
-    }, [dispatch,genre_id]);
+    }, [dispatch, genre_id]);
 
     const {data} = useAppSelector(state => state.genres);
 
     useEffect(() => {
         dispatch(getAllGenresPage({page: data.page}))
-    }, [dispatch,data.page]);
+    }, [dispatch, data.page]);
 
     const firstPage = () => {
-        dispatch(setPageGenre({page: 1}));
-
+        // @ts-ignore
+        dispatch(getAllGenres({genre_id: genreId,page: 1}));
     };
 
     const prevPage = () => {
         if (data.page <= data.total_pages) {
-            dispatch(setPageGenre({page: data.page - 1}));
+            // @ts-ignore
+            dispatch(getAllGenres({genre_id: genreId, page: data.page - 1}))
         }
     };
 
     const nextPage = () => {
         if (data.page >= 1) {
-            dispatch(setPageGenre({page: data.page + 1}));
+            // @ts-ignore
+            dispatch(getAllGenres({genre_id: genreId, page: data.page + 1}))
         }
     };
 
     const lastPage = () => {
-        dispatch(setPageGenre({page: 500}));
+        // @ts-ignore
+        dispatch(getAllGenres({genre_id: genreId, page: 500}));
 
     };
 
@@ -65,13 +71,16 @@ const MoviesByGenre:FC= () => {
                             </div>
                         </div>)}
                     </div>
-                <div className={css.buttons}>
-                    <button className={css.button} disabled={data.page - 1 < 1} onClick={() => firstPage()}>First page</button>
-                    <button className={css.button} disabled={data.page - 1 < 1} onClick={() => prevPage()}>Prev</button>
-                    {data.page}of{data.total_pages}
-                    <button className={css.button} disabled={data.page + 1 >= 500} onClick={() => nextPage()}>Next</button>
-                    <button className={css.button} disabled={data.page >= 500} onClick={() => lastPage()}>Last page</button>
-                </div>
+                    <div className={css.buttons}>
+                        <button className={css.button} disabled={data.page - 1 < 1} onClick={() => firstPage()}>First page
+                        </button>
+                        <button className={css.button} disabled={data.page - 1 < 1} onClick={() => prevPage()}>Prev</button>
+                        {data.page}of{data.total_pages}
+                        <button className={css.button} disabled={data.page + 1 >= 500} onClick={() => nextPage()}>Next
+                        </button>
+                        <button className={css.button} disabled={data.page >= 500} onClick={() => lastPage()}>Last page
+                        </button>
+                    </div>
 
                 </div> :
                 <div>Loading</div>

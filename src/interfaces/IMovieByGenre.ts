@@ -6,4 +6,5 @@ export interface IMovieByGenre{
     data: IData;
     status: null | string;
     error: null | string;
+    genreId: number;
 }

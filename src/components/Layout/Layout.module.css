@@ -29,3 +29,9 @@
     font-size: 10px;
     padding-right: 10px;
 }
+.light {
+    background-color: white;
+}
+.dark {
+    background-color: black;
+}

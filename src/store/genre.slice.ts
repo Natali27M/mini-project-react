@@ -3,49 +3,56 @@ import {IActionFulledGenres, IId, IMovieByGenre, IPage} from "../interfaces";
 import {genresService} from "../services";
 import {IMoviePage} from "../interfaces/IMoviePage";
 
-export const getAllGenres = createAsyncThunk<IMoviePage,IId>(
+export const getAllGenres = createAsyncThunk<IMoviePage, IId>(
     "genreSlice/getAllGenres",
 // @ts-ignore
-    async ({genre_id,page}) => {
+    async ({page, genre_id}) => {
         try {
-            const genres = await genresService.getGenres(genre_id,page);
+            console.log(page);
+            console.log(genre_id);
+            const genres = await genresService.getGenres(genre_id, page);
 
-            return {moviesByGenre:genres.data.results,data:genres.data};
+            return {moviesByGenre: genres.data.results, data: genres.data};
 
-        } catch (e){
+        } catch (e) {
             console.log(e);
         }
     }
 );
 
-export const getAllGenresPage = createAsyncThunk<IMoviePage,IPage>(
+export const getAllGenresPage = createAsyncThunk<IMoviePage, IPage>(
     "genreSlice/getAllGenresPage",
 // @ts-ignore
-    async ({genre_id,page}) => {
+    async ({genre_id, page}) => {
         try {
-            const genres = await genresService.getGenres(genre_id,page);
+            const genres = await genresService.getGenres(genre_id, page);
 
-            return {moviesByGenre:genres.data.results,data:genres.data};
+            return {moviesByGenre: genres.data.results, data: genres.data};
 
-        } catch (e){
+        } catch (e) {
             console.log(e);
         }
     }
 );
 
-const initialState:IMovieByGenre={
+const initialState: IMovieByGenre = {
     moviesByGenre: [],
-    data:{page:1,total_pages:0},
-    status:null,
-    error: null
+    data: {page: 1, total_pages: 0},
+    status: null,
+    error: null,
+    genreId: 0,
+
 }
 
 const genreSlice = createSlice({
     name: "genreSlice",
     initialState,
     reducers: {
-        setPageGenre: (state:Draft<IMovieByGenre>, action: PayloadAction<IPage>) => {
+        setPageGenre: (state: Draft<IMovieByGenre>, action: PayloadAction<IPage>) => {
             state.data.page = action.payload.page;
+        },
+        setGenreId: (state, action) => {
+            state.genreId = action.payload.genre_id;
         }
     },
     extraReducers: {
@@ -69,4 +76,5 @@ const genreSliceReducer = genreSlice.reducer;
 
 export default genreSliceReducer;
 
-export const {setPageGenre}=genreSlice.actions
+export const {setPageGenre, setGenreId} = genreSlice.actions
+
