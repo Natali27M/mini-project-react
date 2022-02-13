@@ -17,10 +17,10 @@ const GenresPage: FC = () => {
 
     return (
         <div>
-
             <div className={css.genres}>
                 {genres.map(genre=><Genre key={genre.id} genre={genre}/>)}
             </div>
+
             <div>
                 <Outlet/>
             </div>

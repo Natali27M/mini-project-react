@@ -31,7 +31,7 @@ const initialState:IStateMovie = {
 };
 
 const movieSlice = createSlice({
-    name: 'movieSlice',
+    name: "movieSlice",
     initialState,
 
     reducers: {
@@ -42,17 +42,17 @@ const movieSlice = createSlice({
 
     extraReducers: {
         [getAllMovie.pending.type]: (state: Draft<IStateMovie>) => {
-            state.status = 'pending';
+            state.status = "pending";
             state.error = null;
         },
         [getAllMovie.fulfilled.type]: (state: Draft<IStateMovie>, action: PayloadAction<IActionFulledMovies>) => {
-            state.status = 'fulfilled';
+            state.status = "fulfilled";
             state.movies = action.payload.movie;
             state.genres = action.payload.genre;
             state.data = action.payload.data;
         },
         [getAllMovie.rejected.type]: (state: Draft<IStateMovie>, action: PayloadAction<string>) => {
-            state.status = 'reject';
+            state.status = "reject";
             state.error = action.payload;
         }
     }

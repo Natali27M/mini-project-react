@@ -1,12 +1,12 @@
 import {NavLink, Outlet} from "react-router-dom";
-import useLocalStorage from 'use-local-storage';
+import useLocalStorage from "use-local-storage";
 
 import css from "./Layout.module.css"
 
 const Layout = () => {
-    const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+    const [theme, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light");
 
     const switchTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light"

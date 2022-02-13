@@ -1,6 +1,7 @@
 import {useLocation} from "react-router-dom";
-import {IMovie} from "../../interfaces";
 import {useEffect, useState} from "react";
+
+import {IMovie} from "../../interfaces";
 import {useAppSelector} from "../../hooks";
 import css from "./MovieDetails.module.css";
 
@@ -26,14 +27,19 @@ const MovieDetails = () => {
     return (
         <div className={css.main}>
             <h2>{original_title}</h2>
+
             <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="original_title"/>
+
             <div className={css.releaseData}>
                 <p>{release_date}</p>
             </div>
+
             <p>-{vote_average}-</p>
+
             <div className={css.movieGenres}>
                 {movieGenres.map(movieGenre=><div key={movieGenre}>{movieGenre}</div>)}
             </div>
+
             <div className={css.overview}>
                 <p>{overview}</p>
             </div>
