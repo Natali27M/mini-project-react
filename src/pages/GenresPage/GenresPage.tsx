@@ -22,8 +22,6 @@ const GenresPage: FC = () => {
                 {genres.map(genre=><Genre key={genre.id} genre={genre}/>)}
             </div>
             <div>
-
-
                 <Outlet/>
             </div>
         </div>

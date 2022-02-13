@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
-import {IActionFulledGenres, IId, IMovieByGenre, IPage} from "../interfaces";
+import {IActionFulledGenres, IId, IIdPage, IMovieByGenre, IPage} from "../interfaces";
 import {genresService} from "../services";
 import {IMoviePage} from "../interfaces/IMoviePage";
 
@@ -48,10 +48,10 @@ const genreSlice = createSlice({
     name: "genreSlice",
     initialState,
     reducers: {
-        setPageGenre: (state: Draft<IMovieByGenre>, action: PayloadAction<IPage>) => {
-            state.data.page = action.payload.page;
-        },
-        setGenreId: (state, action) => {
+        // setPageGenre: (state: Draft<IMovieByGenre>, action: PayloadAction<IPage>) => {
+        //     state.data.page = action.payload.page;
+        // },
+        setGenreId: (state:Draft<IMovieByGenre>, action:PayloadAction<IIdPage>) => {
             state.genreId = action.payload.genre_id;
         }
     },
@@ -76,5 +76,5 @@ const genreSliceReducer = genreSlice.reducer;
 
 export default genreSliceReducer;
 
-export const {setPageGenre, setGenreId} = genreSlice.actions
+export const {setGenreId} = genreSlice.actions
 

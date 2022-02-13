@@ -12,7 +12,6 @@ const Genre:FC<{genre:IGenre}> = ({genre:{name,id}}) => {
                 <Link to={`/genres/${id}`} state={id}>{name}</Link>
             </div>
         </div>
-
     );
 };
 

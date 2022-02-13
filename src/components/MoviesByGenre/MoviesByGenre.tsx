@@ -11,6 +11,7 @@ const MoviesByGenre: FC = () => {
     const dispatch = useAppDispatch();
 
     const {genre_id} = useParams()
+    // @ts-ignore
     dispatch(setGenreId({genre_id}))
 
 
@@ -67,7 +68,7 @@ const MoviesByGenre: FC = () => {
                                     <p>{movieByGenre.release_date}</p>
                                     <p>-{movieByGenre.vote_average}-</p>
                                 </div>
-                                <p>{movieByGenre.overview}</p>
+                                <div className={css.overview}> <p>{movieByGenre.overview}</p></div>
                             </div>
                         </div>)}
                     </div>

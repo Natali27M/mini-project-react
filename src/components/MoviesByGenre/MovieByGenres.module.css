@@ -7,7 +7,6 @@
 .movieCard{
     border: 5px solid black;
     width: 23%;
-    /*height: 900px;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,6 +38,9 @@
 .dataAverage p{
     font-size: 18px;
 }
+.overview {
+    overflow-y: auto;
+}
 .buttons {
     display: flex;
     justify-content: center;
@@ -48,4 +50,18 @@
     background-color: darkred;
     border-radius: 5px;
 }
+
+
+@media screen and (min-width: 400px) and (max-width: 767px){
+    .movieCard{
+        width: 45%;
+    }
+    .movieCard img{
+        width: 150px;
+    }
+    .information {
+        width: 150px;
+    }
+}
+
 

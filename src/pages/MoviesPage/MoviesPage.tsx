@@ -43,6 +43,7 @@ const MoviesPage: FC = () => {
 
     };
 
+
     return (
         <div>
             <div>
@@ -53,12 +54,20 @@ const MoviesPage: FC = () => {
                         </div>
 
                         <div className={css.buttons}>
-                            <button className={css.button} disabled={data.page - 1 < 1} onClick={()=>firstPage()}>First page</button>
-                            <button className={css.button} disabled={data.page - 1 < 1} onClick={() => prevPage()}>Prev page</button>
-                            {data.page}of{data.total_pages}
-                            <button className={css.button} disabled={data.page + 1 >= 500} onClick={() => nextPage()}>Next page
+                            <button className={css.button} disabled={data.page - 1 < 1} onClick={()=>firstPage()}>
+                                First page
                             </button>
-                            <button className={css.button} disabled={data.page >= 500} onClick={() => lastPage()}>Last page</button>
+                            <button className={css.button} disabled={data.page - 1 < 1} onClick={() => prevPage()}>
+                                Prev page
+                            </button>
+                            {data.page}of{data.total_pages}
+                            <button className={css.button} disabled={data.page + 1 >= 500} onClick={() => nextPage()}>
+                                Next page
+                            </button>
+                            <button className={css.button} disabled={data.page >= 500} onClick={() => lastPage()}>
+                                Last page
+                            </button>
+
                         </div>
 
                     </div> :
@@ -71,3 +80,4 @@ const MoviesPage: FC = () => {
 };
 
 export {MoviesPage};
+
