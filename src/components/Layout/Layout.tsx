@@ -15,15 +15,15 @@ const Layout = () => {
 
     return (
         <div>
-            <div className={theme === "light" ? css.headerDark : css.header}>
+            <div className={theme === "light" ? css.header : css.headerDark}>
                 <NavLink to="/movies">Movies</NavLink>
                 <NavLink to="/genres">Genres</NavLink>
                 <button onClick={switchTheme}>
                     Switch to{theme === "light" ? "Dark" : "Light"}Theme
                 </button>
             </div>
-            <div className={theme === "light" ? css.outletDark : css.outlet}><Outlet/></div>
-            <div className={theme === "light" ? css.footerDark : css.footer}>https://api.themoviedb.org</div>
+            <div className={theme === "light" ? css.outlet : css.outletDark}><Outlet/></div>
+            <div className={theme === "light" ? css.footer : css.footerDark}>https://api.themoviedb.org</div>
         </div>
     );
 };
