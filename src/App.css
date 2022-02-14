@@ -1,2 +1,15 @@
+/*:root {*/
+/*    --darkTheme: black;*/
+/*    --lightTheme: white;*/
+/*    --mainDark: black;*/
+/*    --mainWhite: white;*/
+/*}*/
 
-
+/*body {*/
+/*    background-color: var(--lightTheme) !important;*/
+/*    color: var(--mainDark)!important;*/
+/*}*/
+/*.light {*/
+/*    background-color: var(--darkTheme) !important;*/
+/*    color: var(--mainWhite)!important;*/
+/*}*/

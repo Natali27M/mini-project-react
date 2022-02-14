@@ -11,15 +11,13 @@ const MoviesByGenre: FC = () => {
     const dispatch = useAppDispatch();
 
     const {genre_id} = useParams()
-    // @ts-ignore
-    dispatch(setGenreId({genre_id}))
+
+    dispatch(setGenreId({genre_id:+genre_id!}))
 
 
     useEffect(() => {
         if (genre_id) {
-            // @ts-ignore
             dispatch(getAllGenres({genre_id: genreId, page: 1}))
-
         }
     }, [dispatch, genre_id]);
 
@@ -30,28 +28,23 @@ const MoviesByGenre: FC = () => {
     }, [dispatch, data.page]);
 
     const firstPage = () => {
-        // @ts-ignore
         dispatch(getAllGenres({genre_id: genreId,page: 1}));
     };
 
     const prevPage = () => {
         if (data.page <= data.total_pages) {
-            // @ts-ignore
             dispatch(getAllGenres({genre_id: genreId, page: data.page - 1}))
         }
     };
 
     const nextPage = () => {
         if (data.page >= 1) {
-            // @ts-ignore
             dispatch(getAllGenres({genre_id: genreId, page: data.page + 1}))
         }
     };
 
     const lastPage = () => {
-        // @ts-ignore
         dispatch(getAllGenres({genre_id: genreId, page: 300}));
-
     };
 
     return (
@@ -100,3 +93,4 @@ const MoviesByGenre: FC = () => {
 };
 
 export {MoviesByGenre};
+

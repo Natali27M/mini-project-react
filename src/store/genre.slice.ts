@@ -1,12 +1,11 @@
 import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
 
-import {IActionFulledGenres, IId, IIdPage, IMovieByGenre, IPage} from "../interfaces";
+import {IActionFulledGenres, IId,IMovieByGenre} from "../interfaces";
 import {genresService} from "../services";
-import {IMoviePage} from "../interfaces/IMoviePage";
 
-export const getAllGenres = createAsyncThunk<IMoviePage, IId>(
+export const getAllGenres = createAsyncThunk<any,any>(
     "genreSlice/getAllGenres",
-// @ts-ignore
+
     async ({page, genre_id}) => {
         try {
             const genres = await genresService.getGenres(genre_id, page);
@@ -19,9 +18,8 @@ export const getAllGenres = createAsyncThunk<IMoviePage, IId>(
     }
 );
 
-export const getAllGenresPage = createAsyncThunk<IMoviePage, IPage>(
+export const getAllGenresPage = createAsyncThunk<any, any>(
     "genreSlice/getAllGenresPage",
-// @ts-ignore
     async ({genre_id, page}) => {
         try {
             const genres = await genresService.getGenres(genre_id, page);
@@ -47,10 +45,7 @@ const genreSlice = createSlice({
     name: "genreSlice",
     initialState,
     reducers: {
-        // setPageGenre: (state: Draft<IMovieByGenre>, action: PayloadAction<IPage>) => {
-        //     state.data.page = action.payload.page;
-        // },
-        setGenreId: (state:Draft<IMovieByGenre>, action:PayloadAction<IIdPage>) => {
+        setGenreId: (state:Draft<IMovieByGenre>, action:PayloadAction<IId>) => {
             state.genreId = action.payload.genre_id;
         }
     },
@@ -76,4 +71,3 @@ const genreSliceReducer = genreSlice.reducer;
 export default genreSliceReducer;
 
 export const {setGenreId} = genreSlice.actions
-

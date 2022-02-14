@@ -12,6 +12,7 @@ const GenresPage: FC = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+        // @ts-ignore
         dispatch(getAllMovie({page: 1}))
     }, [dispatch]);
 

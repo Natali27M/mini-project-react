@@ -18,9 +18,9 @@ const Layout = () => {
             <div className={theme === "light" ? css.headerDark : css.header}>
                 <NavLink to="/movies">Movies</NavLink>
                 <NavLink to="/genres">Genres</NavLink>
-                    <button onClick={switchTheme}>
-                        Switch to{theme === "light" ? "Dark" : "Light"}Theme
-                    </button>
+                <button onClick={switchTheme}>
+                    Switch to{theme === "light" ? "Dark" : "Light"}Theme
+                </button>
             </div>
             <div className={theme === "light" ? css.outletDark : css.outlet}><Outlet/></div>
             <div className={theme === "light" ? css.footerDark : css.footer}>https://api.themoviedb.org</div>
